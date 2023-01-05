@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Word>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="col-6">
+                Kelime Listesi
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Word" asp-action="Create" class="btn btn-primary">Ekle</a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Word 
+            </th>
+            <th>
+                Word Title
+            </th>
+           
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.Wordname
+                </td>
+                <td>
+                    @obj.WordTitle
+                </td>
+               
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Word" asp-action="Edit" asp-route-id="@obj.WordId" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>Güncelle</a>
+                    </div>
+                </td>
+                    <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Word" asp-action="Delete" asp-route-id="@obj.WordId" class="btn btn-danger mx-2"><i class="bi bi-trash3"></i>Sil</a>
+                        </div>
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>
